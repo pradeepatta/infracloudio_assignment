@@ -8,4 +8,9 @@ services:
     - "$PWD/inputFile:/csvserver/inputdata"
   environment:
       - CSVSERVER_BORDER=Orange
-  restart: unless-stopped
+ prometheus:
+  image: prom/prometheus:v2.22.0
+  ports:
+    - "9090:9090"
+  volumes:
+    - "$PWD/prometheus.yml:/etc/prometheus/prometheus.yml"
